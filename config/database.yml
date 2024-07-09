@@ -79,7 +79,6 @@ DATABASE_URL="postgresql://blog_5g9l_user:2GCajpe26clxdX6hfQ0HsKiVA1pqLn5E@dpg-c
 # for a full overview on how database connection configuration can be specified.
 # postgresql://blog_5g9l_user:2GCajpe26clxdX6hfQ0HsKiVA1pqLn5E@dpg-cq6n5jogph6c73ejp570-a/blog_5g9l
 production:
-  url: <%= ENV[postgresql://blog_5g9l_user:2GCajpe26clxdX6hfQ0HsKiVA1pqLn5E@dpg-cq6n5jogph6c73ejp570-a/blog_5g9l] %>
   <<: *default
   database: blogapp_production
   username: blogapp
