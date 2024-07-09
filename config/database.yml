@@ -31,4 +31,6 @@ test:
 # ensure the database is located in a persisted volume.
 production:
   <<: *default
+  adapter: sqlite3
+  database: storage/development.sqlite3
   # database: path/to/persistent/storage/production.sqlite3
