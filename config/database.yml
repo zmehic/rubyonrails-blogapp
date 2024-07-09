@@ -77,9 +77,10 @@ test:
 #
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
-#
+# postgresql://blog_5g9l_user:2GCajpe26clxdX6hfQ0HsKiVA1pqLn5E@dpg-cq6n5jogph6c73ejp570-a/blog_5g9l
 production:
   <<: *default
   database: blogapp_production
+  url: <%= ENV["postgresql://blog_5g9l_user:2GCajpe26clxdX6hfQ0HsKiVA1pqLn5E@dpg-cq6n5jogph6c73ejp570-a/blog_5g9l"] %>
   username: blogapp
   password: <%= ENV["BLOGAPP_DATABASE_PASSWORD"] %>
