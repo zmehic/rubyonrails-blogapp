@@ -1,0 +1,8 @@
+<h1>Moj controller</h1>
+
+<%@posts.each do |htmlpost|%>
+  <div>
+    <h2><%= link_to htmlpost.title,htmlpost%></h2>
+    <h4><%= htmlpost.body%></h4>
+  </div>
+<%end%>
