@@ -10,7 +10,9 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
+  pool: 5
+  timeout: 5000
+  adapter: sqlite3
   database: storage/development.sqlite3
   dbfile: storage/development.sqlite3
 # Warning: The database defined as "test" will be erased and
