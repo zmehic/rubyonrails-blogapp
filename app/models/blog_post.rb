@@ -2,7 +2,7 @@ class BlogPost < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
 
-  scope :sorted, -> { order(published_at: :asc) }
+  scope :sorted, -> { order(Arel.sql("published_at DESC NULLS LAST")).order(updated_at: :ASC) }
   scope :draft, -> { where(published_at: nil) }
   scope :published, -> { where("published_at <= ?", Time.current) }
   scope :scheduled, -> { where("published_at > ?", Time.current) }
