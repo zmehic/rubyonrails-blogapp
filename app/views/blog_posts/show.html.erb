@@ -1,5 +1,5 @@
 <div>
   <%= link_to "Edit", edit_blog_post_path(@blog_post) if user_signed_in?%>
   <h1><%=@blog_post.title%></h1>
-  <h4><%=@blog_post.body%></h4>
+  <h4><%=@blog_post.content%></h4>
 </div>
