@@ -1,5 +1,8 @@
 <div>
   <%= link_to "Edit", edit_blog_post_path(@blog_post) if user_signed_in?%>
+  <%if @blog_post.cover_image.attached? ==true%>
+    <%= image_tag @blog_post.cover_image%>
+  <%end%>
   <h1><%=@blog_post.title%></h1>
   <h4><%=@blog_post.content%></h4>
 </div>

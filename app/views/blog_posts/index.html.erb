@@ -2,7 +2,9 @@
 
 <%@blog_posts.each do |htmlpost|%>
   <div>
-
+    <%if htmlpost.cover_image.attached? ==true%>
+      <%= image_tag htmlpost.cover_image%>
+    <%end%>
     <h2><%= link_to htmlpost.title,htmlpost%></h2>
     <% if htmlpost.draft?%>
     <div class = "p-2 rounded bg-gray-100 text-gray-900">Draft</div>
