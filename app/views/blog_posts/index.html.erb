@@ -1,6 +1,6 @@
 <h1>Moj controller</h1>
 
-<%@posts.each do |htmlpost|%>
+<%@blog_posts.each do |htmlpost|%>
   <div>
 
     <h2><%= link_to htmlpost.title,htmlpost%></h2>
@@ -13,3 +13,7 @@
     <h4><%= htmlpost.content%></h4>
   </div>
 <%end%>
+
+<div  class="my-16">
+<%== pagy_nav(@pagy) %>
+</div>

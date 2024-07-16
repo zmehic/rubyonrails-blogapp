@@ -8,8 +8,13 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-user = User.where(email:"zaim.mehic@edu.fit.ba").first_or_initialize
+user = User.where(email: "zaim.mehic@edu.fit.ba").first_or_initialize
 user.update!(
   password: "password",
   password_confirmation: "password"
 )
+
+100.times do |i|
+  blog_post=BlogPost.where(title: "Blog post #{i}").first_or_initialize
+  blog_post.update(content: "Hello World", published_at: Time.current)
+end

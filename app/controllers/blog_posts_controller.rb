@@ -3,10 +3,12 @@ class BlogPostsController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show ]
   def index
     if user_signed_in?
-      @posts = BlogPost.sorted
+      @blog_posts = BlogPost.sorted
     else
-      @posts = BlogPost.published.sorted
+      @blog_posts = BlogPost.published.sorted
+
     end
+    @pagy, @blog_posts = pagy(@blog_posts)
   end
 
   def show
