@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
     @blog_post = BlogPost.find(params[:blog_post_id])
     @comment = @blog_post.comments.new(comment_params)
     if @comment.save
-      redirect_to blog_post_path(@blog_post)
+      turbo_stream
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
     end
     @comment.likes += 1
     if @comment.save
-      redirect_to blog_post_comment_path(BlogPost.find(params[:blog_post_id]))
+      redirect_to blog_post_path(BlogPost.find(params[:blog_post_id]))
     else
       render :new, status: :unprocessable_entity
     end
@@ -45,7 +45,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    redirect_to blog_post_path
+    turbo_stream
   end
 
   private

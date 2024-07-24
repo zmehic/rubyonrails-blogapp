@@ -2,16 +2,15 @@ class BlogPostsController < ApplicationController
   before_action :set_blog_post, only: [ :show, :edit, :update, :destroy ]
   before_action :authenticate_user!, except: [ :index, :show ]
   def index
-    if user_signed_in?
-      @blog_posts = BlogPost.sorted
+    @blog_posts = if user_signed_in?
+      BlogPost.sorted
     else
-      @blog_posts = BlogPost.published.sorted
+      BlogPost.published.sorted
 
     end
     @pagy, @blog_posts = pagy(@blog_posts)
-
   rescue Pagy::OverflowError
-    redirect_to root_path(page:1)
+    redirect_to root_path(page: 1)
   end
 
   def show
@@ -53,10 +52,10 @@ class BlogPostsController < ApplicationController
   end
 
   def set_blog_post
-    if user_signed_in?
-      @blog_post = BlogPost.find(params[:id])
+    @blog_post = if user_signed_in?
+      BlogPost.find(params[:id])
     else
-      @blog_post = BlogPost.published.find(params[:id])
+      BlogPost.published.find(params[:id])
     end
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path

@@ -1,3 +1,5 @@
-<div class="mt-10">
-  <%= render partial: "forms", locals: {blog_post: @blog_post, comment:@comment, method: :post} %>
-</div>
+<%= turbo_frame_tag "newcomment" do %>
+  <div class="mt-10">
+    <%= render partial: "forms", locals: {blog_post: @blog_post, comment:@comment, method: :post} %>
+  </div>
+<% end %>

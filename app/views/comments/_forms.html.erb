@@ -1,5 +1,5 @@
-<%= form_with model: [@blog_post, @comment],local: true, method: method  do |form|%>
-  <% if form.object.errors.any?%>
+<%= form_with model: [@blog_post, @comment], data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }, local: true, method: method  do |form| %>
+  <% if form.object.errors.any? %>
     <div>
       <% form.object.errors.full_messages.each do |message| %>
       <div><%= message %> </div>
@@ -8,13 +8,13 @@
   <% end %>
 
   <div>
-    <%=form.label :user%>
-    <%= form.text_field :user%>
+    <%= form.label :user %>
+    <%= form.text_field :user %>
   </div>
   <div>
-    <%=form.label :body%>
-    <%= form.text_area :body%>
+    <%= form.label :body %>
+    <%= form.text_area :body %>
   </div>
 
-  <%=form.button%>
+  <%= form.submit %>
 <% end %>

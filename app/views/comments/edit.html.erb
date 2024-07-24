@@ -1,5 +1,7 @@
-<%= turbo_frame_tag "comment" do %>
-  <div class="mt-10">
-    <%= render partial: "forms", locals: {blog_post: @blog_post, comment: @comment, method: :put} %>
-  </div>
+<%= @blog_post.comments.each do |comment| %>
+  <%= turbo_frame_tag dom_id(comment) do %>
+    <div class="mt-10">
+      <%= render partial: "forms", locals: {blog_post: @blog_post, comment: @comment, method: :put} %>
+    </div>
+  <% end %>
 <% end %>
