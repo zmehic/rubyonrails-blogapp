@@ -1,0 +1,22 @@
+<%= turbo_frame_tag "comment" do %>
+  <div id="<%= dom_id comment%>" class="rounded border-2 border-black my-3">
+    <div class="flex items-center"> <!-- Flex container for username and likes -->
+      <h4 class="bg-gray-300 flex-grow py-2 px-4"> <!-- Username -->
+        Korisnik: <b><%= comment.user %></b>
+      </h4>
+      <div class="flex items-center ml-4"> <!-- Action buttons container -->
+        <div class="flex items-center mr-4"> <!-- Likes container -->
+          <h4 class="mr-2">Broj lajkova:</h4> <!-- "Broj lajkova" text -->
+          <span class="bg-gray-200 px-2 py-1 rounded-lg mr-2"><%= comment.likes %></span> <!-- Likes count -->
+          <%= button_to "Like", blog_post_likes_path(@blog_post, comment.id), method: :put, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75" %> <!-- Like button -->
+        </div>
+        <%if user_signed_in?%>
+          <%= link_to "Edit", edit_blog_post_comment_path(@blog_post, comment), class: "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-75"%> <!-- Edit button -->
+          <%= button_to "Delete", blog_post_comment_path(@blog_post, comment), method: :delete, data: { confirm: "Are you sure you want to delete this comment?" }, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full ml-2 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75" %> <!-- Delete button -->
+        <%end%>
+      </div>
+    </div>
+    <h5 class="bg-gray-100 text-left py-2 px-4">Komentar: <%= comment.body %></h5> <!-- Comment body -->
+  </div>
+<% end %>
+

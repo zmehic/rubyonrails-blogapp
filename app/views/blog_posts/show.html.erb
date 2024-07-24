@@ -5,4 +5,11 @@
   <%end%>
   <h1><%=@blog_post.title%></h1>
   <h4><%=@blog_post.content%></h4>
+
+</div>
+
+<h3>Komentari</h3>
+  <%= link_to "Novi komentar", new_blog_post_comment_path(@blog_post) %>
+<div>
+  <%= render @blog_post.comments %>
 </div>

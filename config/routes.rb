@@ -8,13 +8,13 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   # Ispod su moje rute.
 
-  resources :blog_posts do 
+  resources :blog_posts do
+    resources :comments
+    put 'comments/liked/:id', to: 'comments#like', as: 'likes'
     resources :cover_image, only: [:destroy], module: :blog_posts
-      def 
-        
-      end
+    def
+        end
     end
-    
   end
 
   # Render dynamic PWA files from app/views/pwa/*
