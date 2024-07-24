@@ -1,8 +1,17 @@
 <div>
-  <%= link_to "Edit", edit_blog_post_path(@blog_post) if user_signed_in?%>
-  <%if @blog_post.cover_image.attached? ==true%>
-    <%= image_tag @blog_post.cover_image%>
-  <%end%>
-  <h1><%=@blog_post.title%></h1>
-  <h4><%=@blog_post.content%></h4>
+  <%= link_to "Edit", edit_blog_post_path(@blog_post) if user_signed_in? %>
+  <% if @blog_post.cover_image.attached? ==true %>
+    <%= image_tag @blog_post.cover_image %>
+  <% end %>
+  <h1><%= @blog_post.title %></h1>
+  <h4><%= @blog_post.content %></h4>
+
+</div>
+
+<h3>Komentari</h3>
+
+<%= turbo_frame_tag "newcomment", src: new_blog_post_comment_path(@blog_post), target: "_top" %>
+
+<div id="comments">
+  <%= render @blog_post.comments %>
 </div>

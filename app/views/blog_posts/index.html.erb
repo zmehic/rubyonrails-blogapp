@@ -1,23 +1,23 @@
 <h1>Moj controller</h1>
 
-<%@blog_posts.each do |htmlpost|%>
+<% @blog_posts.each do |htmlpost| %>
   <div>
-    <%if htmlpost.cover_image.attached? ==true%>
-      <%= image_tag htmlpost.cover_image%>
-    <%end%>
-    <h2><%= link_to htmlpost.title,htmlpost%></h2>
-    <% if htmlpost.draft?%>
-    <div class = "p-2 rounded bg-gray-100 text-gray-900">Draft</div>
+    <% if htmlpost.cover_image.attached? ==true %>
+      <%= image_tag htmlpost.cover_image %>
     <% end %>
-    <% if htmlpost.scheduled?%>
-    <div class = "p-2 rounded bg-blue-100 text-gray-900">Scheduled</div>
+    <h2><%= link_to htmlpost.title,htmlpost %></h2>
+    <% if htmlpost.draft? %>
+      <div class = "p-2 rounded bg-gray-100 text-gray-900">Draft</div>
+    <% end %>
+    <% if htmlpost.scheduled? %>
+      <div class = "p-2 rounded bg-blue-100 text-gray-900">Scheduled</div>
     <% end %>
     <h4><%= htmlpost.content%></h4>
   </div>
-<%end%>
+<% end %>
 
-<% if @pagy.count>@pagy.items%>
+<% if @pagy.count>@pagy.items %>
 <div class="my-16">
   <%== pagy_nav(@pagy) %>
 </div>
-<%end%>
+<% end %>
