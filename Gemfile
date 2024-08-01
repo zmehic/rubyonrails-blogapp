@@ -62,5 +62,5 @@ gem "devise", "~> 4.9"
 gem "tailwindcss-rails", "~> 2.6"
 gem "azure-storage-blob", require: false
 
-gem "pagy", "~> 8.6"
+gem "pagy", "~> 9.0"
 gem "ruby-lsp"
